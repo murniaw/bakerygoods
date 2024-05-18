@@ -20,12 +20,12 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- App Fitur -->
-    <script src="src/app.js"></script>
+    <script src="src/app.js" async></script>
   </head>
   <body>
     <!-- Navbar Start-->
     <nav class="navbar" x-data>
-      <a href="#" class="navbar-logo">MoonG<span>bakery</span></a>
+      <a href="#" class="navbar-logo"><img src="img/favicon.ico" alt="">MoonG<span>bakery</span></a>
       <div class="navbar-nav">
         <a href="#">Home</a>
         <a href="#about">Tentang Kami</a>
@@ -70,9 +70,12 @@
         </template>
         <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">Keranjang Anda Kosong</h4>
         <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
+
         <!-- Fitur Form Checkout -->
         <div class="form-container" x-show="$store.cart.items.length">
           <form action="" id="checkoutForm">
+            <input type="hidden" name="items" x-model="JSON.stringify($store.cart.items)">
+            <input type="hidden" name="total" x-model="$store.cart.total">
             <h5>Customer Detail</h5>
             <label for="name">
               <span>Name</span>
@@ -83,10 +86,10 @@
               <input type="email" name="email" id="email" />
             </label>
             <label for="name">
-              <span>Phone Number</span>
+              <span>Phone</span>
               <input type="text" name="phone" id="phone" autocomplete="off" />
             </label>
-            <button class="checkout-button" type="submit" id="checkout-button" value="checkout">Checkout</button>
+            <button class="checkout-button disabled" type="submit" id="checkout-button" value="checkout">Checkout</button>
           </form>
         </div>
       </div>
@@ -98,7 +101,8 @@
     <section class="hero" id="home">
       <main class="content">
         <h1>Feel The Enjoyment of <span>Freshly-Baked</span> Breads</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, molestiae.</p>
+        <p>Sensasi rasa autentik tiada tanding.</p>
+        <p>MoonG, toko roti pilihanmu!</p>
         <a href="#" class="cta">Order Now</a>
       </main>
     </section>
@@ -106,15 +110,21 @@
 
     <!-- About Section start -->
     <section id="about" class="about">
-      <h2><span>Tentang</span> Kami</h2>
+      <h2><span>About</span> Us</h2>
       <div class="row">
         <div class="about-img">
           <img src="img/roti3.jpg" alt="Tentang Kami" />
         </div>
         <div class="content">
-          <h3>Kenapa Memilih <span>Bakery Goods</span></h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore nobis iure doloribus eligendi. Deleniti, adipisci accusamus modi eum facilis suscipit!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate aliquam est eaque tenetur itaque ut quas quibusdam deleniti in quos?</p>
+          <h3>Selamat Datang di <span>MoonG Bakery!</span></h3>
+          <p>
+            Kami adalah rekan yang memiliki visi, misi, dan hobi yang sama — menciptakan roti-roti lezat yang dapat dinikmati semua orang. Kami memutuskan untuk mewujudkan impian kami yaitu membuka toko roti sendiri. Kami berkomitmen untuk
+            selalu menggunakan bahan-bahan berkualitas tinggi, menerapkan standar kebersihan yang ketat, dan memberikan pelayanan yang ramah dan profesional.
+          </p>
+          <p>
+            MoonG Bakery didirikan dengan semangat untuk berbagi kebahagiaan melalui roti-roti lezat yang kami buat. Kami berharap Anda dapat merasakan kebahagiaan kami saat Anda mengunjungi MoonG Bakery. Kami tidak sabar untuk menyambut
+            Anda pada dunia roti yang penuh kegembiraan.
+          </p>
         </div>
       </div>
     </section>
@@ -122,44 +132,35 @@
 
     <!-- Menu Section start -->
     <section id="menu" class="menu">
-      <h2><span>Menu</span> Kami</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore nobis iure doloribus eligendi.</p>
+      <h2>Our <span>Best</span> Seller</h2>
+      <p>Pilihan sempurna yang selalu menjadi favorit banyak orang. Temukan MoonBakery favoritmu di sini.</p>
       <div class="row">
         <div class="menu-card">
-          <img src="img/menu1.jpg" class="menu-card-img" alt="sample" />
-          <h3 class="menu-card-title">- Bun -</h3>
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <p class="menu-card-price">IDR 7K</p>
+          <a href="#" class="item-detail-button">
+            <img class="icon" src="icons/info.svg" alt="" />
+          </a>
+          <img src="img/menu3.png" class="menu-card-img" alt="sample" />
+          <h3 class="menu-card-title">- #1 -</h3>
+          <h3>Moon Pizza Rolls</h3>
+          <p class="menu-card-price">IDR 10K <span>IDR 20K</span></p>
         </div>
         <div class="menu-card">
-          <img src="img/menu1.jpg" class="menu-card-img" alt="sample" />
-          <h3 class="menu-card-title">- Bun -</h3>
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <p class="menu-card-price">IDR 7K</p>
+          <a href="#" class="item-detail-button">
+            <img class="icon" src="icons/info.svg" alt="" />
+          </a>
+          <img src="img/menu6.png" class="menu-card-img" alt="sample" />
+          <h3 class="menu-card-title">- #2 -</h3>
+          <h3>Moon Croissant</h3>
+          <p class="menu-card-price">IDR 15K <span>IDR 23K</span> </p>
         </div>
         <div class="menu-card">
-          <img src="img/menu1.jpg" class="menu-card-img" alt="sample" />
-          <h3 class="menu-card-title">- Bun -</h3>
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <p class="menu-card-price">IDR 7K</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu1.jpg" class="menu-card-img" alt="sample" />
-          <h3 class="menu-card-title">- Bun -</h3>
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <p class="menu-card-price">IDR 7K</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu1.jpg" class="menu-card-img" alt="sample" />
-          <h3 class="menu-card-title">- Bun -</h3>
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <p class="menu-card-price">IDR 7K</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu1.jpg" class="menu-card-img" alt="sample" />
-          <h3 class="menu-card-title">- Bun -</h3>
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <p class="menu-card-price">IDR 7K</p>
+          <a href="#" class="item-detail-button">
+            <img class="icon" src="icons/info.svg" alt="" />
+          </a>
+          <img src="img/menu7.png" class="menu-card-img" alt="sample" />
+          <h3 class="menu-card-title">- #3 -</h3>
+          <h3>Moon Shortcake</h3>
+          <p class="menu-card-price">IDR 20K <span>IDR 25.5K</span></p>
         </div>
       </div>
     </section>
@@ -167,17 +168,14 @@
 
     <!-- Shop Section start -->
     <section class="shop" id="shop" x-data="products">
-      <h2><span>Menu</span> Kami</h2>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat ipsa reprehenderit maxime! Voluptatibus, officiis culpa!</p>
+      <h2>Our <span>Menu</span></h2>
+      <p>Jelajahi surga dari pecinta MoonBakery. Jangan lewatkan setiap menunya!</p>
       <div class="row">
         <template x-for="(item, index) in items" x-key="index">
           <div class="shop-card">
             <div class="shop-icons">
               <a href="#" @click.prevent="$store.cart.add(item)">
                 <img src="icons/plus-square.svg" alt="" />
-              </a>
-              <a href="#" class="item-detail-button">
-                <img src="icons/info.svg" alt="" />
               </a>
             </div>
             <div class="shop-image">
@@ -186,8 +184,11 @@
             <div class="shop-content">
               <h3 x-text="item.name"></h3>
               <div class="shop-stars">
-                <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <use href="img/feather-sprite.svg#star" />
+                <img src="icons/star.svg" alt="">
+                <img src="icons/star.svg" alt="">
+                <img src="icons/star.svg" alt="">
+                <img src="icons/star.svg" alt="">
+                <img src="icons/star.svg" alt="">
                 </svg>
               </div>
               <div class="shop-price"><span x-text="rupiah(item.price)"></span></div>
@@ -201,7 +202,7 @@
     <!-- Contact Section start -->
     <section id="contact" class="contact">
       <h2><span>Contact</span> Us</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <p>Untuk informasi lebih lanjut, Hubungi layanan kami dengan mengisi kontak di bawah ini</p>
       <div class="row">
         <iframe
           class="map"
@@ -254,22 +255,25 @@
       <div class="modal-container">
         <a href="#" class="close-icon"><i data-feather="x"></i></a>
         <div class="modal-content">
-          <img src="img/menu1.jpg" alt="Product 1" />
+          <img src="img/menu3.jpg" alt="Product 1" />
           <div class="product-content">
-            <h3>Product1</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda tempore minima culpa neque debitis perferendis praesentium adipisci natus fugit nesciunt.</p>
+            <h3>Moon Pizza Rolls</h3>
+            <p><span>Nuy:</span>
+              <br>
+              "Moon pizza rolls yang merupakan variasi unik dari pizza yang dikemas dalam bentuk gulungan kecil, praktis, dan lezat. Moon pizza rolls sangat cocok untuk disajikan sebagai hidangan pembuka saat berkumpul bersama karena memiliki ukuran yang kecil dan unik."</p>
+            <br>
             <div class="shop-stars">
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
-              <i data-feather="star" class=""></i>
+              <i data-feather="star" class="star"></i>
             </div>
-            <div class="shop-price">IDR 7K <span>IDR 15K</span></div>
-            <a href="#"><i data-feather="shopping-cart"></i> <span>Add to cart</span></a>
+            <div class="shop-price">IDR 7K</div>
           </div>
         </div>
       </div>
+      <!-- Apa di class modal? -->
     </div>
     <!-- Modal box item detail end -->
 
@@ -279,6 +283,6 @@
     </script>
 
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js" ></script>
   </body>
 </html>

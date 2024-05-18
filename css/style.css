@@ -48,6 +48,12 @@ body {
   color: var(--primary);
 }
 
+.navbar .navbar-logo img {
+  position: absolute;
+  top: 10px;
+  left: 52px;
+}
+
 .navbar .navbar-nav a {
   color: #fff;
   display: inline-block;
@@ -236,6 +242,10 @@ body {
   margin: 1rem auto;
   cursor: pointer;
 }
+.form-container .checkout-button.disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
 
 /* Hero Section */
 .hero {
@@ -299,7 +309,7 @@ body {
 
 .about h2,
 .menu h2,
-.shop,
+.shop h2,
 .contact h2 {
   text-align: center;
   font-size: 2.6rem;
@@ -320,6 +330,7 @@ body {
 
 .about .row .about-img {
   flex: 1 1 45rem;
+  margin: auto;
 }
 
 .about .row .about-img img {
@@ -345,16 +356,24 @@ body {
 
 /* Menu Section*/
 .menu h2,
+.shop h2,
 .contact h2 {
   margin-bottom: 1rem;
 }
 .menu p,
+.shop p,
 .contact p {
   text-align: center;
   max-width: 30rem;
   margin: auto;
   font-weight: 100;
   line-height: 1.6;
+  font-size: 1.2rem;
+}
+.menu p span {
+  text-decoration: line-through;
+  font-weight: lighter;
+  font-size: 1rem;
 }
 .menu .row {
   display: flex;
@@ -369,6 +388,11 @@ body {
 .menu .row .menu-card img {
   border-radius: 50%;
   width: 80%;
+}
+.menu .row .menu-card .icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
 }
 .menu .row .menu-card .menu-card-title {
   margin: 1rem auto 0.5rem;
@@ -439,12 +463,6 @@ body {
   font-weight: bold;
 }
 
-/* .shop .shop-price span {
-  text-decoration: line-through;
-  font-weight: bold;
-  font-size: 1.4rem;
-  font-size: 1.1rem;
-} */
 .feather {
   width: 24px;
   height: 24px;
@@ -589,10 +607,20 @@ footer .credit a {
   border-radius: 10%;
 }
 
-.modal-content p {
+.modal-content h3 {
   font-size: 1.2rem;
+}
+
+.modal-content p {
+  font-size: 1.1rem;
   line-height: 1.8rem;
   margin-top: 1.2rem;
+  color: #513c28;
+}
+
+.modal-content p span {
+  font-weight: bold;
+  color: #222;
 }
 
 .modal-content a {
@@ -680,6 +708,9 @@ footer .credit a {
   }
   .modal-content {
     flex-wrap: wrap;
+  }
+  .navbar .navbar-logo img {
+    display: none;
   }
 }
 /* -HP */
